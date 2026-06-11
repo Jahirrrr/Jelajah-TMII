@@ -94,10 +94,6 @@ Preview hasil build:
 npm run preview
 ```
 
-## Data dan Aset
-
-Data konten disimpan secara statis di folder `src/data`, sehingga aplikasi dapat berjalan tanpa backend. Aset gambar yang aktif berada di `public/assets/tmii`, sementara aset lama yang tidak digunakan sudah dibersihkan agar struktur proyek lebih rapi.
-
 ## Validasi
 
 Perintah build sudah berhasil dijalankan:
