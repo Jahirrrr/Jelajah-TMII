@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+  <title id="title">Jelajah TMII</title>
+  <desc id="desc">Logo Taman Mini Indonesia Indah dengan danau, anjungan, dan matahari.</desc>
+  <rect width="500" height="500" rx="110" fill="#F8FAFC"/>
+  <circle cx="250" cy="250" r="205" fill="#E0F2FE"/>
+  <path d="M112 312c58-28 110-34 158-18 44 14 82 8 118-18 12-9 25 5 16 18-36 52-94 82-163 82-49 0-93-15-129-41-9-6-9-18 0-23Z" fill="#0F766E"/>
+  <path d="M120 306c51-16 98-18 141-4 43 13 80 7 116-20" fill="none" stroke="#67E8F9" stroke-width="18" stroke-linecap="round"/>
+  <path d="M172 239h156l-78-74-78 74Z" fill="#DC2626"/>
+  <path d="M193 239h114v98H193z" fill="#F8FAFC"/>
+  <path d="M214 337v-58h72v58" fill="#FACC15"/>
+  <path d="M250 165v-44" stroke="#0F172A" stroke-width="16" stroke-linecap="round"/>
+  <path d="M230 121h40" stroke="#0F172A" stroke-width="16" stroke-linecap="round"/>
+  <path d="M154 190h192" stroke="#0F172A" stroke-width="15" stroke-linecap="round"/>
+  <path d="M181 250h138" stroke="#0F172A" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="352" cy="148" r="36" fill="#FACC15"/>
+  <path d="M128 174c16-24 39-39 68-45" fill="none" stroke="#16A34A" stroke-width="16" stroke-linecap="round"/>
+  <text x="250" y="423" text-anchor="middle" fill="#0F172A" font-family="Poppins, Arial, sans-serif" font-size="54" font-weight="800">TMII</text>
+</svg>

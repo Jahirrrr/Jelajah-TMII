@@ -1,0 +1,139 @@
+<template>
+    <section id="islands"
+        class="relative mx-auto mt-16 rounded-[3rem] bg-primaryhover px-4 py-16 dark:bg-primarydark md:px-10 lg:max-w-screen-xl lg:px-10 lg:py-20 xl:mx-auto xl:px-20">
+        <div class="assets">
+            <img src="/assets/aircraft.svg" class="invisible absolute right-0 z-10 h-12 w-12 md:visible"
+                alt="air-craft" />
+            <img src="/assets/airballoon.svg"
+                class="invisible absolute left-14 top-56 z-10 h-16 w-16 rotate-12 md:visible" alt="air-balloon" />
+            <img src="/assets/cloudy.svg" class="absolute left-1/2 top-4 z-10 h-16 w-16 rotate-12" alt="cloud" />
+        </div>
+        <div class="mx-auto mb-10 max-w-xl sm:text-center md:mb-12 lg:max-w-2xl">
+            <div class="mx-auto mb-5 max-w-xl text-center lg:max-w-2xl">
+                <h2 class="mb-2 inline-block rounded-full bg-primarydark p-2 text-center font-poppins text-xs font-bold uppercase tracking-wider text-light shadow-xl dark:bg-primary md:mb-4"
+                    role="heading" aria-level="2">
+                    JELAJAH TMII
+                </h2>
+                <div class="mb-4">
+                    <h1 class="inline-block max-w-2xl font-poppins text-xl font-bold leading-tight text-light dark:text-lighthover md:text-3xl"
+                        role="heading" aria-level="1">
+                        Pilih Zona Jelajah TMII: Budaya, Rekreasi, Edukasi, dan Ruang Terbuka
+                    </h1>
+                </div>
+                <p class="font-inter text-base font-normal text-lighthover dark:text-graylight" role="heading"
+                    aria-level="2">
+                    Temukan area terbaik sesuai rencana kunjungan Anda.
+                </p>
+            </div>
+        </div>
+        <div class="mx-auto grid gap-6 px-4 sm:grid-cols-2 md:max-w-full lg:max-w-screen-xl lg:grid-cols-3 lg:gap-10">
+            <div v-for="island in islandData" :key="island.id"
+                class="card relative transform overflow-hidden rounded-3xl shadow-xl transition duration-300 hover:shadow-2xl hover:shadow-dark lg:hover:-translate-y-2">
+                <img class="h-64 w-full object-cover md:h-64 xl:h-80"
+                    :src="`/assets/${island.image}` || `https://placehold.co/600x400/000000/FFF?text=${island.name}`"
+                    :alt="island.title || `Zona ${island.name}`" loading="lazy" />
+                <h3 class="absolute left-1/2 top-1/2 inline-block -translate-x-1/2 -translate-y-1/2 rounded-md bg-[#27272782] px-3 py-2 text-center font-poppins text-lg font-bold capitalize text-light hover:hidden"
+                    :aria-label="`zona-${island.name}`">
+                    {{ island.title || island.name }}
+                </h3>
+                <div
+                    class="absolute inset-0 z-[1000] flex flex-col justify-center bg-primarydark/85 px-5 py-4 text-center opacity-100 transition-opacity duration-300 sm:opacity-0 sm:hover:opacity-100">
+                    <h1 class="card-title mb-2 font-rubik text-lg font-medium capitalize text-light md:mb-4 lg:font-bold"
+                        role="heading" aria-level="2" :aria-label="`zona-${island.name}`">{{ island.title || island.name }}
+                    </h1>
+                    <p class="lg:text-md small-desc mb-2 font-inter text-sm font-normal tracking-wide text-light lg:mb-4 lg:font-medium"
+                        aria-label="deskripsi">
+                        {{ island.description }} Tersedia
+                        {{ getDestinationCount(island.name) }} destinasi pilihan di zona ini.
+                    </p>
+                    <div class="flex items-center justify-center space-x-3">
+                        <a :href="`/destinasi/zona/${island.name}`"
+                            class="relative isolation-auto z-10 overflow-hidden rounded-md border-2 border-light bg-light px-5 py-2 font-inter capitalize before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-primarydark before:transition-all before:duration-700 hover:text-light before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 dark:bg-primary dark:text-light sm:px-8 lg:font-semibold"
+                            role="link" :aria-label="`jelajah-zona-${island.name}`">Jelajahi Zona
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+<script>
+
+import { islands } from '../data/islands';
+import { tours } from '../data/tours';
+export default {
+    data() {
+        return {
+            islands,
+            tours,
+        }
+    },
+
+    computed: {
+        islandData() {
+            return this.islands;
+        },
+
+        // mapping jumlah destinasi by island
+        destinationCountByIsland() {
+            const countMap = {};
+
+            this.islands.forEach(island => {
+                countMap[island.name] = 0;
+            });
+
+            this.tours.forEach(tour => {
+                if(tour.island && tour.island.name) {
+                    countMap[tour.island.name] = (countMap[tour.island.name] || 0) +1;
+                }
+            });
+
+            return countMap;
+        }
+    },
+
+    methods: {
+        // get jumlah destinasi by island name
+        getDestinationCount(islandName) {
+            return this.destinationCountByIsland[islandName] || 0;
+        },
+
+        // filtering
+        getDestinationCountDirect(islandName) {
+            return this.tours.filter(tour => 
+                tour.island && tour.island.name === islandName
+            ).length;
+        },
+
+        // get semua destinasi by island name
+        getDestinationByIsland(islandName) {
+            return this.tours.filter(tour => 
+                tour.island && tour.island.name === islandName
+            );
+        }
+
+    }
+}
+</script>
+
+<style>
+
+.card:before {
+    content: '';
+    position: absolute;
+    z-index: 999;
+    top: -26px;
+    right: -26px;
+    background: linear-gradient(135deg, #25825e, rgb(46, 159, 105));
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 1s ease-out;
+}
+
+.card:hover:before {
+    transform: scale(28);
+}
+</style>
