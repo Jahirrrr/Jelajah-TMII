@@ -95,16 +95,6 @@ Preview hasil build:
 npm run preview
 ```
 
-## Konfigurasi Environment
-
-Form kontak menggunakan endpoint SheetMonkey melalui environment variable berikut:
-
-```env
-VITE_SHEETMONKEY_URL=https://api.sheetmonkey.io/form/...
-```
-
-Jika variable ini belum diisi, tampilan website tetap berjalan, tetapi fitur submit form kontak tidak akan mengirim data ke spreadsheet.
-
 ## Data dan Aset
 
 Data konten disimpan secara statis di folder `src/data`, sehingga aplikasi dapat berjalan tanpa backend. Aset gambar yang aktif berada di `public/assets/tmii`, sementara aset lama yang tidak digunakan sudah dibersihkan agar struktur proyek lebih rapi.
@@ -118,14 +108,6 @@ npm run build
 ```
 
 Hasil build dibuat oleh Vite di folder `dist/`.
-
-## Catatan Pengembangan
-
-- Gunakan komponen `PostCard.vue` untuk tampilan kartu artikel.
-- Gunakan komponen `DestinationCard.vue` untuk tampilan kartu destinasi.
-- Tambahkan data destinasi baru melalui `src/data/tours.js`.
-- Tambahkan artikel baru melalui `src/data/posts.js`.
-- Simpan gambar baru di `public/assets/tmii` atau folder aset khusus yang relevan, lalu pastikan path-nya direferensikan dari data.
 
 ## Lisensi
 
