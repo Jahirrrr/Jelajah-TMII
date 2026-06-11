@@ -22,7 +22,6 @@ Website panduan wisata Taman Mini Indonesia Indah untuk proyek UAS Pemrograman W
 - Halaman author untuk melihat artikel berdasarkan penulis.
 - Halaman kontak dengan form pengiriman pesan.
 - Dark mode dan tampilan responsif untuk desktop maupun mobile.
-- Aset gambar sudah disesuaikan dengan konten/caption artikel dan destinasi.
 
 ## Teknologi
 
